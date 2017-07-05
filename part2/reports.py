@@ -13,7 +13,6 @@ def sum_sold(file_name):
         release_dates = database.read().strip()
     data = [x.split("\t") for x in release_dates.split("\n")]
     sells = sum([float(x[1]) for x in data])
-    print(sells)
     return sells
 
 
@@ -79,16 +78,25 @@ def get_date_ordered(file_name):
     title = [str(x[0]) for x in data]
     date = [int(x[2]) for x in data]
     title_date_list = list(zip(title, date))
-    ordered_data = sorted(sorted(title_date_list, key = lambda title_date_list: title_date_list[0]), key = lambda title_date_list:title_date_list[1], reverse = True)
+    ordered_data = sorted(
+        sorted(
+            title_date_list,
+            key=lambda title_date_list: title_date_list[0]),
+        key=lambda title_date_list: title_date_list[1],
+        reverse=True)
     orderded_list_by_date_and_name = [str(x[0]) for x in ordered_data]
     return orderded_list_by_date_and_name
 
 
-print(get_most_played("game_stat.txt"))
-print(sum_sold("game_stat.txt"))
-print(get_selling_avg("game_stat.txt"))
-print(count_longest_title("game_stat.txt"))
-print(get_date_avg("game_stat.txt"))
-print(get_game("game_stat.txt", "StarCraft"))
-print(count_grouped_by_genre("game_stat.txt"))
-print(get_date_ordered("game_stat.txt"))
+def main():
+    get_most_played("game_stat.txt")
+    sum_sold("game_stat.txt")
+    get_selling_avg("game_stat.txt")
+    count_longest_title("game_stat.txt")
+    get_date_avg("game_stat.txt")
+    get_game("game_stat.txt", "StarCraft")
+    count_grouped_by_genre("game_stat.txt")
+    get_date_ordered("game_stat.txt")
+
+
+main()
