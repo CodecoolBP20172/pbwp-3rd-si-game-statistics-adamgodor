@@ -4,7 +4,7 @@ export_data = []
 def count_games(file_name):
     database = open(file_name)
     cont = database.readlines()
-    database.close
+    database.close()
     export_data.append(str(len(cont)))
     return len(cont)
 

@@ -1,7 +1,7 @@
 def count_games(file_name):
     database = open(file_name)
     cont = database.readlines()
-    database.close
+    database.close()
     return len(cont)
 
 
